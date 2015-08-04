@@ -1,0 +1,7 @@
+{% extends 'MukhinContactsBundle:Contact:base.html.twig' %}
+
+{% block value %}
+    <div class="contact__value">
+        <a href="mailto:{{ contact.email }}">{{ contact.email }}</a>
+    </div>
+{% endblock %}

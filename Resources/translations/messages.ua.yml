@@ -1,0 +1,14 @@
+mukhin:
+  contacts:
+
+    phone:
+      label: 'тел.:'
+
+    email:
+      label: 'ел. адреса:'
+
+    address:
+      label: 'адреса:'
+
+    messenger:
+      label: 'месенджер:'

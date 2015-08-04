@@ -1,0 +1,7 @@
+{% extends 'MukhinContactsBundle:Contact:base.html.twig' %}
+
+{% block value %}
+    <div class="contact__value">
+        <a href="tel:{{ contact.phone }}">{{ contact.phone }}</a>
+    </div>
+{% endblock %}

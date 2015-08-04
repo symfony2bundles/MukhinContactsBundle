@@ -1,0 +1,6 @@
+{% block contact %}
+    <div class="contact__item contact__item-labeled contact__{{ contact.type }}">
+        {% block label %}<div class="contact__label">{{ contact.label|trans }}</div>{% endblock %}
+        {% block value %}<div class="contact__value">{{ contact.value }}</div>{% endblock %}
+    </div>
+{% endblock %}

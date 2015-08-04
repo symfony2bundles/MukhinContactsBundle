@@ -1,0 +1,64 @@
+{% macro department_render(department) %}
+    {% set department_skin = department.isMajor ? 'major' : 'minor' %}
+
+    <div class="departments__item departments__item-{{ department_skin }}{% if department.isMajor %} row{% else %} col-md-6{% endif%}">
+        <h2 class="departments__header{% if department.isMajor %} col-md-12{% endif%}">{{ department.name }}</h2>
+
+        {% set addresses = department.contacts|contacts_include('address') %}
+        {% set another_contacts = department.contacts|contacts_exclude('address') %}
+
+        {% if addresses|length %}
+            <div class="contact__column{% if department.isMajor %} col-md-6{% endif%}">
+                {% for address in addresses %}
+                    {{ contact_render(address) }}
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% if another_contacts %}
+            <div class="contact__column contact__column-another{% if department.isMajor %} col-md-6{% endif%}">
+                {% for contact in another_contacts %}
+                    {{ contact_render(contact) }}
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% if addresses|length %}
+            <div class="contact__column{% if department.isMajor %} col-md-12{% else %} col-md-6{% endif%}">
+                {{ _self.map_render(addresses) }}
+            </div>
+        {% endif %}
+
+        {% for person in department.persons %}
+            <div class="person{% if department.isMajor %} col-md-6{% endif%}">
+                {{ _self.person_render(person) }}
+            </div>
+        {% endfor %}
+    </div>
+
+    {% if department.children|length %}
+        <div class="row">
+            {% for subdepartment in department.children %}
+                {{ _self.department_render(subdepartment) }}
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endmacro %}
+
+{% macro person_render(person) %}
+    <h3 class="person__header">
+        <span class="person__san">{{ person.san }}</span>
+        <span class="person__firstname">{{ person.firstName }}</span>
+        <span class="person__lastname">{{ person.lastName }}</span>
+    </h3>
+    <div class="person__post">{{ person.post }}</div>
+    <div class="contact__column">
+        {% for contact in person.contacts %}
+            {{ contact_render(contact) }}
+        {% endfor %}
+    </div>
+{% endmacro %}
+
+{% macro map_render(addresses) %}
+    <img src="https://maps.googleapis.com/maps/api/staticmap?center={{ addresses[0] }}&zoom=13&size=1024x400&maptype=roadmap" alt="" class="contact__item contact__map img-responsive" />
+{% endmacro %}

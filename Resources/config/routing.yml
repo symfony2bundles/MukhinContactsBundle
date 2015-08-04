@@ -1,0 +1,5 @@
+mukhin_contacts:
+    path: /
+    defaults:
+        _controller: MukhinContactsBundle:Default:index
+        template:    MukhinContactsBundle:Default:index.html.twig

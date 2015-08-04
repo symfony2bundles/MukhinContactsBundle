@@ -1,0 +1,72 @@
+parameters:
+    mukhin.contacts.entity.contact_address: Mukhin\ContactsBundle\Entity\ContactAddress
+    mukhin.contacts.manager.contact_address.class: Mukhin\ContactsBundle\Manager\ContactAddressManager
+
+    mukhin.contacts.entity.contact_phone: Mukhin\ContactsBundle\Entity\ContactPhone
+    mukhin.contacts.manager.contact_phone.class: Mukhin\ContactsBundle\Manager\ContactPhoneManager
+
+    mukhin.contacts.entity.contact_email: Mukhin\ContactsBundle\Entity\ContactEmail
+    mukhin.contacts.manager.contact_email.class: Mukhin\ContactsBundle\Manager\ContactEmailManager
+
+    mukhin.contacts.entity.contact_messenger: Mukhin\ContactsBundle\Entity\ContactMessenger
+    mukhin.contacts.manager.contact_messenger.class: Mukhin\ContactsBundle\Manager\ContactMessengerManager
+
+    mukhin.contacts.entity.contact_social: Mukhin\ContactsBundle\Entity\ContactSocial
+    mukhin.contacts.manager.contact_social.class: Mukhin\ContactsBundle\Manager\ContactSocialManager
+
+    mukhin.contacts.entity.department: Mukhin\ContactsBundle\Entity\Department
+    mukhin.contacts.manager.department.class: Mukhin\ContactsBundle\Manager\DepartmentManager
+
+    mukhin.contacts.entity.person: Mukhin\ContactsBundle\Entity\Person
+    mukhin.contacts.manager.person.class: Mukhin\ContactsBundle\Manager\PersonManager
+
+services:
+    mukhin.contacts.manager.contact_address:
+        class: %mukhin.contacts.manager.contact_address.class%
+        arguments:
+            - %mukhin.contacts.entity.contact_address%
+            - @doctrine
+
+    mukhin.contacts.manager.contact_phone:
+        class: %mukhin.contacts.manager.contact_phone.class%
+        arguments:
+            - %mukhin.contacts.entity.contact_phone%
+            - @doctrine
+
+    mukhin.contacts.manager.contact_email:
+        class: %mukhin.contacts.manager.contact_email.class%
+        arguments:
+            - %mukhin.contacts.entity.contact_email%
+            - @doctrine
+
+    mukhin.contacts.manager.contact_messenger:
+        class: %mukhin.contacts.manager.contact_messenger.class%
+        arguments:
+            - %mukhin.contacts.entity.contact_messenger%
+            - @doctrine
+
+    mukhin.contacts.manager.contact_social:
+        class: %mukhin.contacts.manager.contact_social.class%
+        arguments:
+            - %mukhin.contacts.entity.contact_social%
+            - @doctrine
+
+    mukhin.contacts.manager.department:
+        class: %mukhin.contacts.manager.department.class%
+        arguments:
+            - %mukhin.contacts.entity.department%
+            - @doctrine
+
+    mukhin.contacts.manager.person:
+        class: %mukhin.contacts.manager.person.class%
+        arguments:
+            - %mukhin.contacts.entity.person%
+            - @doctrine
+
+    mukhin.contacts.twig.filter_extension:
+        class: Mukhin\ContactsBundle\Twig\FilterExtension
+        arguments:
+            - @service_container
+        tags:
+            - { name: twig.extension }
+

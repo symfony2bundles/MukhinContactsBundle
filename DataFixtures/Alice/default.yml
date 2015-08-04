@@ -1,0 +1,41 @@
+\Mukhin\ContactsBundle\Entity\Department:
+  user{1..3}:
+    type: primary
+    name: <company()>
+    contacts:
+      - @department_address<current()>
+      - @department_email<current()>
+      - @department_phone<current()>
+    persons:
+      - @person<current()*2-1>
+      - @person<current()*2>
+
+\Mukhin\ContactsBundle\Entity\Person:
+  person{1..6}:
+    san: Mr.
+    firstname: <firstName()>
+    secondname: <lastName()>
+    post:
+    contacts:
+      - @person_email<current()>
+      - @person_phone<current()>
+
+\Mukhin\ContactsBundle\Entity\ContactAddress:
+  department_address{1..3}:
+    zip: <zip()>
+    country: <country()>
+    city: <city()>
+    street: <street()>
+    build: <build()>
+
+\Mukhin\ContactsBundle\Entity\ContactPhone:
+  department_phone{1..3}:
+    phone: <phone()>
+  person_phone{1..6}:
+    phone: <phone()>
+
+\Mukhin\ContactsBundle\Entity\ContactEmail:
+  department_email{1..3}:
+    email: <email()>
+  person_email{1..6}:
+    email: <email()>

@@ -1,0 +1,14 @@
+mukhin:
+  contacts:
+
+    phone:
+      label: 'phone:'
+
+    email:
+      label: 'e-mail:'
+
+    address:
+      label: 'address:'
+
+    messenger:
+      label: 'messenger:'

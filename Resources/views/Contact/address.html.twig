@@ -1,0 +1,15 @@
+{% extends 'MukhinContactsBundle:Contact:base.html.twig' %}
+
+{% block contact %}
+    <div class="contact__item contact__{{ contact.type }}">
+        {% block value %}
+            {{ contact.street }}
+            {{ contact.build }}
+            ({{ contact.comment }})
+
+            {{ contact.city }}
+            {{ contact.zip }}
+            {{ contact.country }}
+        {% endblock %}
+    </div>
+{% endblock %}

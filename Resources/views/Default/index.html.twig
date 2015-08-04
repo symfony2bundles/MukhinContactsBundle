@@ -1,0 +1,16 @@
+{% import "MukhinContactsBundle:Macro:macro.html.twig" as contacts_macro %}
+
+<ul class="breadcrumb">
+    <li><a href="#">Паломнический отдел</a></li>
+    <li class="active">Контакты</li>
+</ul>
+
+<h1 class="text-center">Контактная информация</h1>
+
+<div class="departments">
+    <div class="departments__items">
+        {% for department in departments %}
+            {{ contacts_macro.department_render(department) }}
+        {% endfor %}
+    </div>
+</div>
